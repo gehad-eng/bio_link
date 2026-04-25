@@ -7,7 +7,7 @@
 		"build": "npm run build --prefix web",
 		"start": "concurrently --kill-others --raw",
 		"lint": "concurrently --raw \"npm run lint --prefix web\"",
-		"predeploy": "npm run build && node -e \"const fs = require('fs'); ['web/dist/CNAME', 'web/public/CNAME'].forEach(p => { if (fs.existsSync(p)) fs.unlinkSync(p) })\"",
+		"predeploy": "npm run build && node -e \"const fs = require('fs'); ['web/dist/CNAME', 'web/public/CNAME'].forEach(p => { if (fs.existsSync(p)) fs.unlinkSync(p) }); if (fs.existsSync('node_modules/.cache/gh-pages')) fs.rmSync('node_modules/.cache/gh-pages', { recursive: true, force: true })\"",
 		"deploy": "gh-pages -d web/dist -n"
 	},
 	"devDependencies": {
