@@ -8,6 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: '/bio_link/',
   resolve: {
     alias: {
       // This maps '@' to the 'src' directory
