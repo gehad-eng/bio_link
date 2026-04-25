@@ -4,16 +4,17 @@
 	"private": true,
 	"scripts": {
 		"dev": "concurrently --kill-others --raw \"npm run dev --prefix apps/web\"",
-		"build": "concurrently --raw \"npm run build --prefix apps/web\"",
+		"build": "concurrently --raw \"npm run build --prefix web\"",
 		"start": "concurrently --kill-others --raw",
-		"lint": "concurrently --raw \"npm run lint --prefix apps/web\"",
-		"predeploy": "npm run build",
+		"lint": "concurrently --raw \"npm run lint --prefix web\"",
+		"predeploy": "npm run build && node -e \"require('fs').writeFileSync('web/dist/.nojekyll', '')\"",
 		"deploy": "gh-pages -d web/dist"
 	},
 	"devDependencies": {
-		"concurrently": "^9.1.2"
+		"concurrently": "^9.1.2",
+		"gh-pages": "^6.3.0"
 	},
 	"workspaces": [
-		"apps/*"
+		"web"
 	]
 }
