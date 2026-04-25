@@ -30,24 +30,20 @@ function App() {
   const [background, setBackground] = useState('image1');
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const backgroundTimer = setInterval(() => {
       setBackground((prev) => {
         const currentIndex = backgroundIds.indexOf(prev);
-        const nextIndex = (currentIndex + 1) % backgroundIds.length;
+        // Ensure we handle cases where the current ID might not be in the list
+        const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % backgroundIds.length;
         return backgroundIds[nextIndex];
       });
-    }, 2500); // Changes background every 2.5 seconds
+    }, 4000); // Increased to 4 seconds for better user experience
 
-    return () => clearInterval(interval);
+    return () => clearInterval(backgroundTimer);
   }, []);
 
-  const getBackgroundStyle = () => {
-    if (background.startsWith('image')) {
-      return {
-        backgroundImage: `url(${backgroundImages[background]})`,
-      };
-    }
-    return {};
+  const backgroundStyle = {
+    backgroundImage: `url(${backgroundImages[background]})`,
   };
 
   return (
@@ -58,7 +54,7 @@ function App() {
       </Helmet>
       <div 
         className={`min-h-screen ${backgrounds[background]} transition-all duration-500`}
-        style={getBackgroundStyle()}
+        style={backgroundStyle}
       >
         <div className="min-h-screen bg-black/30">
           <BackgroundSettings 
