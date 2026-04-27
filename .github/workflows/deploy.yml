@@ -1,0 +1,43 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: "main"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build_site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        # This tells GitHub to install dependencies inside the 'web' folder
+        run: |
+          npm install
+          cd web && npm install
+
+      - name: Build
+        # This tells GitHub to run the build inside the 'web' folder
+        run: |
+          cd web && npm run build
+
+      - name: Upload Artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # We update this to point to the correct folder where the site is built
+          path: web/dist
+
+      - name: Deploy
+        uses: actions/deploy-pages@v4
