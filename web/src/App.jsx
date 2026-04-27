@@ -21,7 +21,7 @@ const backgroundImages = {
   image3: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=1200&q=80',
   image5: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80',
   image6: 'https://images.unsplash.com/photo-1642425149556-b6f90e946859?q=80&w=1170',
-  image7: 'https://images.unsplash.com/photo-1668896379676-c349528c9023?q=80&w=735&',
+  image7: 'https://images.unsplash.com/photo-1668896379676-c349528c9023?q=80&w=735',
 };
 
 const backgroundIds = Object.keys(backgrounds);
