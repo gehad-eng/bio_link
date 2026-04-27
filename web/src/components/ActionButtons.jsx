@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const buttons = [
-  { label: 'My Company', url: 'https://sabatc-2td2w38va-gehad-engs-projects.vercel.app/' },
+  { label: 'My Company', url: 'https://sabatc-new.vercel.app/' },
   { label: 'LinkedIn Profile', url: 'https://www.linkedin.com/in/gehad-dahman-3703381b3' },
   { label: 'Schedule meeting with me', url: 'https://cal.com/gehad-dahman-nhyfqy' },
   { label: 'Email Me', url: 'https://mail.google.com/mail/?view=cm&fs=1&to=gehaddahman@gmail.com' },
