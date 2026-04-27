@@ -5,7 +5,7 @@ const buttons = [
   { label: 'My Company', url: 'https://www.sabatc.com' },
   { label: 'LinkedIn Profile', url: 'https://www.linkedin.com/in/gehad-dahman-3703381b3' },
   { label: 'Schedule meeting with me', url: 'https://cal.com/gehad-dahman-nhyfqy' },
-  { label: 'Email Me', url: 'mailto:gehaddahman@gmail.com' },
+  { label: 'Email Me', url: 'https://mail.google.com/mail/?view=cm&fs=1&to=gehaddahman@gmail.com' },
 ];
 
 const ActionButtons = () => {
