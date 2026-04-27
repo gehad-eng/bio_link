@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: "main" # Change this to "master" if your default branch is named master
+    branches: "main"
 
 permissions:
   contents: read
@@ -15,23 +15,29 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
+
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
-      
+
       - name: Install dependencies
-        run: npm install
-      
+        # This tells GitHub to install dependencies inside the 'web' folder
+        run: |
+          npm install
+          cd web && npm install
+
       - name: Build
-        run: npm run build
-      
+        # This tells GitHub to run the build inside the 'web' folder
+        run: |
+          cd web && npm run build
+
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
-      
+          # We update this to point to the correct folder where the site is built
+          path: web/dist
+
       - name: Deploy
         uses: actions/deploy-pages@v4
